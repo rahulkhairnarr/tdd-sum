@@ -23,7 +23,7 @@ export const add = (numbers: string): number | Error => {
       }
       return num;
     }
-    total = nums.reduce((sum, num) => (sum = sum + num), 0);
+    total = nums.reduce((sum, num) => (sum = sum + (num > 1000 ? 0 : num)), 0);
     return total;
   } catch (error) {
     return new Error("Unexpected Error");
