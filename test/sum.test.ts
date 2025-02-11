@@ -13,4 +13,8 @@ describe('Testing Add Function', () =>{
         const result = add(" 1 ");
         expect(result).toBe(1);
     });
+    test("Single Negative Number", () =>{
+        const result = add("-1");
+        expect(result).toThrow('negative numbers not allowed -1')
+    });
 });
