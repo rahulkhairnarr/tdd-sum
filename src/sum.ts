@@ -7,21 +7,27 @@ export const add = (numbers: string): number | Error => {
     numbers = numbers.trim();
     const delimiter = /,|\n/;
     const customDelimiterMatch = numbers.match(/^\/\/(.+)\n/);
-    let customDelimiter = '';
+    let customDelimiter = "";
     if (customDelimiterMatch) {
       customDelimiter = customDelimiterMatch[0];
-      numbers = numbers.replace(/^\/\/(.+)\n/, '');
+      numbers = numbers.replace(/^\/\/(.+)\n/, "");
     }
 
-    const delimiters = customDelimiter ? new RegExp(`[${customDelimiter},\n]`) : delimiter;
+    const delimiters = customDelimiter
+      ? new RegExp(`[${customDelimiter},\n]`)
+      : delimiter;
     const nums = numbers.split(delimiters).map(Number);
-    
+
     if (numbers.length <= 2) {
       const num = parseInt(numbers);
       if (num < 0) {
         return new Error(`negative numbers not allowed ${num}`);
       }
       return num;
+    }
+    const negatives = nums.filter((n) => n < 0);
+    if (negatives.length) {
+      return new Error(`Negatives not allowed: ${negatives.join(", ")}`);
     }
     total = nums.reduce((sum, num) => (sum = sum + (num > 1000 ? 0 : num)), 0);
     return total;
