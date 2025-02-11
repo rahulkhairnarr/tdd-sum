@@ -23,8 +23,12 @@ describe("Testing Add Function", () => {
     const result = add('2,4');
     expect(result).toBe(6)
   });
-  test('Different delimiter', () =>{
-    const result = add('2;3')
-    expect(result).toBe(5)
+  test('Multiple delimiter', () =>{
+    const result = add('//;\n1;2');
+    expect(result).toBe(3);
+  });
+  test('Multiple delimiter with value more than 1000', () =>{
+    const result = add('//;\n1;2000');
+    expect(result).toBe(1);
   });
 });
