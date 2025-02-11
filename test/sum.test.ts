@@ -20,7 +20,11 @@ describe("Testing Add Function", () => {
     }).toThrow("negative numbers not allowed -1");
   });
   test("Add Two number", () =>{
-    const result = add('2 + 4');
+    const result = add('2,4');
     expect(result).toBe(6)
+  });
+  test('Different delimiter', () =>{
+    const result = add('2;3')
+    expect(result).toBe(5)
   });
 });
