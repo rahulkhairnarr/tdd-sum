@@ -9,4 +9,8 @@ describe('Testing Add Function', () =>{
         const result = add('1');
         expect(result).toBe(1);
     });
+    test("Checking with single number with some space", () =>{
+        const result = add(" 1 ");
+        expect(result).toBe(1);
+    });
 });
